@@ -1,0 +1,42 @@
+{% extends 'index.html' %}
+{% block add_anec%}
+<div class="add_anec">
+    <a href=" {% url 'add_anec' %}">+ Добавить анекдот</a>
+</div>
+{% endblock %}
+{% block anecs %}
+{% for anec in anecs %}
+<div class="anec">
+    <p>{{anec.text}}</p>
+    <span><a href="{% url 'cats' anec.category_id %}" class="cat_in_anec">{{anec.category}}</a></span>
+    <div class="date">{{anec.pub_date}}</div>
+</div>
+{% endfor %}
+{% endblock %}
+
+
+{% block auth %}
+{% if user.is_authenticated %}
+<div class="auth">
+    <div class="hi">Привет, {{user.username}}!</div>
+    <div class="nav_btn">
+        <a href=" {%url 'logout'%}">
+            <button class="btn">Выход</button>
+        </a>
+    </div>
+</div>
+{% else %}
+<div class="auth">
+    <div class="nav_btn">
+        <a href="{% url 'login'%}">
+            <button class="btn">Вход</button>
+        </a>
+    </div>
+    <div class="nav_btn">
+        <a href="{% url 'signup'%}">
+            <button class="btn">Регистрация</button>
+        </a>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

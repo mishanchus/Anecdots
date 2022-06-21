@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+<header>
+    <div class="nav">
+        <div class="main">
+            <h1><a href="{% url 'home' %}" class="navlinks">Анекдоты</a></h1>
+        </div>
+        <div class="cats">
+            {% include "_navbar.html"%}
+        </div>
+
+            {% block auth %}
+            {% endblock %}
+        </div>
+
+</header>
+{% block add_anec%}
+{% endblock %}
+
+<div class="content">
+    {% block anecs %}
+    {% endblock %}
+</div>
+{% block login %}
+{% endblock %}
+{% block new_anec %}
+{% endblock %}
+
+{% if request.path == '/'  %}
+    <div class="links">
+        <div class="about"><a href="">Об авторе</a></div>
+        <div class="about"><a href="">О проекте</a></div>
+    </div>
+{% endif %}
+</body>
+</html>

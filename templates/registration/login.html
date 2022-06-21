@@ -1,0 +1,14 @@
+{% extends 'index.html' %}
+
+{% block login %}
+<div class="form">
+    <h1>Login</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn">Login</button>
+    </form>
+    <div><a href="/users/password_reset/">Забыли пароль?</a></div>
+
+</div>
+{% endblock %}

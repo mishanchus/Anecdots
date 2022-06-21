@@ -1,0 +1,14 @@
+{% extends 'index.html' %}
+
+{% block new_anec %}
+
+<form action="" method="post" >
+
+    <div class="new_anec">
+        <h1>Новый анекдот</h1>
+    {% csrf_token %}
+{{ form.as_p }}
+<button type="submit" class="btn">Добавить анекдот</button>
+</div>
+</form>
+{% endblock %}
