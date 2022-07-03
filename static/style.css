@@ -70,7 +70,7 @@ a{
 
 
 .anec {
-    width: 60%;
+    width: 45%;
     margin: auto;
     background-color: rgb(182, 255, 163);
     padding: 10px;
@@ -80,7 +80,8 @@ a{
 
 
 p{
-    font-size: 20px;
+    font-size: 22px;
+    
 }
 
 .date {

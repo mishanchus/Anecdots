@@ -8,7 +8,7 @@ class AnecForm(forms.ModelForm):
     class Meta:
         model = Anecdot
 #        fields = '__all__'
-        fields = ['text','category']
+        fields = ['text','category', 'author']
         widgets = {
             'text':    forms.Textarea(attrs={'class':"text", 'cols':70, 'rows': 15}),
             'category': forms.Select(attrs={'class': 'category'})

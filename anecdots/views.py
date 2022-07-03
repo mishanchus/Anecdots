@@ -24,6 +24,11 @@ class AddAnec(CreateView):
     form_class = AnecForm
     template_name = 'add_anec.html'
     success_url = reverse_lazy('home')
+
+
+
+
+
 # def add_anec(request):
 #     if request.method == 'POST':
 #         form = AnecForm(request.POST)
