@@ -4,11 +4,14 @@ from .models import Anecdot, Category
 from .forms import AnecForm
 from django.core.paginator import Paginator
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 
 class HomePageView(ListView):
     model = Anecdot
     template_name = 'home.html'
     context_object_name = 'anecs'
+    paginate_by = 8
     def get_queryset(self):
         return Anecdot.objects.order_by('-pub_date')
 
@@ -16,17 +19,19 @@ class AnecByCat(ListView):
     model = Anecdot
     template_name = 'home.html'
     context_object_name = 'anecs'
+    paginate_by = 8
     def get_queryset(self):
         return Anecdot.objects.order_by('-pub_date').filter(category=self.kwargs['category_id'])
 
 
-class AddAnec(CreateView):
+class AddAnec(LoginRequiredMixin, CreateView):
     form_class = AnecForm
     template_name = 'add_anec.html'
     success_url = reverse_lazy('home')
-
-
-
+    login_url = 'login'
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
 
 
 # def add_anec(request):

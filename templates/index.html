@@ -33,11 +33,25 @@
 {% block new_anec %}
 {% endblock %}
 
-{% if request.path == '/'  %}
+
+{% if page_obj.has_other_pages%}
+<div class = paginator>
+{% for p in page_obj.paginator.page_range %}
+{% if page_obj.number == p %}
+    <a href="?page={{p}}" class="current_page">{{p}}</a>
+{%else%}
+    <a href="?page={{p}}" class="pages">{{p}}</a>
+{%endif%}
+{% endfor %}
+</div>
+{% endif %}
+
+
+
     <div class="links">
         <div class="about"><a href="">Об авторе</a></div>
         <div class="about"><a href="">О проекте</a></div>
     </div>
-{% endif %}
+
 </body>
 </html>

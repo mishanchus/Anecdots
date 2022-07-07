@@ -1,5 +1,7 @@
 from django.db import models
 from django.urls import reverse
+from django.conf import settings
+
 
 class Anecdot(models.Model):
     text = models.TextField(verbose_name="Анекдот")
@@ -8,10 +10,10 @@ class Anecdot(models.Model):
     like = models.IntegerField(default=0)
     dislike = models.IntegerField(default=0)
     category = models.ForeignKey('Category', on_delete=models.PROTECT, verbose_name="Категория")
-    author = models.ForeignKey('Authors', on_delete=models.CASCADE)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.title
+        return self.text
 
     class Meta:
         verbose_name = "Анекдот"
@@ -30,7 +32,7 @@ class Category(models.Model):
 
 
 
-class Authors(models.Model):
-    author_name = models.CharField(max_length=100)
-    def __str__(self):
-        return self.author_name
+# class Authors(models.Model):
+#     author_name = models.CharField(max_length=100)
+#     def __str__(self):
+#         return self.author_name
