@@ -33,6 +33,10 @@ class AddAnec(LoginRequiredMixin, CreateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
+class AnecDetail(DetailView):
+    model = Anecdot
+    context_object_name = 'anecs'
+    template_name = 'detail_anec.html'
 
 # def add_anec(request):
 #     if request.method == 'POST':

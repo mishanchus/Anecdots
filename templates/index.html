@@ -16,11 +16,33 @@
             {% include "_navbar.html"%}
         </div>
 
-            {% block auth %}
-            {% endblock %}
+            {% if user.is_authenticated %}
+<div class="auth">
+    <div class="hi">Привет, {{user.username}}!</div>
+    <div class="nav_btn">
+        <a href=" {%url 'logout'%}">
+            <button class="btn">Выход</button>
+        </a>
+    </div>
+</div>
+{% else %}
+<div class="auth">
+    <div class="nav_btn">
+        <a href="{% url 'login'%}">
+            <button class="btn">Вход</button>
+        </a>
+    </div>
+    <div class="nav_btn">
+        <a href="{% url 'signup'%}">
+            <button class="btn">Регистрация</button>
+        </a>
+    </div>
+</div>
+{% endif %}
         </div>
 
 </header>
+<main>
 {% block add_anec%}
 {% endblock %}
 
@@ -45,13 +67,13 @@
 {% endfor %}
 </div>
 {% endif %}
+</main>
 
-
-
+<footer>
     <div class="links">
         <div class="about"><a href="">Об авторе</a></div>
         <div class="about"><a href="">О проекте</a></div>
     </div>
-
+</footer>
 </body>
 </html>

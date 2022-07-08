@@ -8,7 +8,11 @@
 {% for anec in anecs %}
 <div class="anec">
     <p>{{anec.text}}</p>
-    <span><a href="{% url 'cats' anec.category_id %}" class="cat_in_anec">{{anec.category}}</a></span>
+    <div class="first_str">
+    <div><a href="{% url 'cats' anec.category_id %}" class="cat_in_anec">{{anec.category}}</a></div>
+    <div><a href="{% url 'detail_anec' anec.pk%}" class="comments_link">Комментарии</a></div>
+
+        </div>
     <div class="date">{{anec.pub_date}}</div>
 </div>
 {% endfor %}
@@ -16,28 +20,3 @@
 {{ page_obj.paginator.get_page }}
 
 
-{% block auth %}
-{% if user.is_authenticated %}
-<div class="auth">
-    <div class="hi">Привет, {{user.username}}!</div>
-    <div class="nav_btn">
-        <a href=" {%url 'logout'%}">
-            <button class="btn">Выход</button>
-        </a>
-    </div>
-</div>
-{% else %}
-<div class="auth">
-    <div class="nav_btn">
-        <a href="{% url 'login'%}">
-            <button class="btn">Вход</button>
-        </a>
-    </div>
-    <div class="nav_btn">
-        <a href="{% url 'signup'%}">
-            <button class="btn">Регистрация</button>
-        </a>
-    </div>
-</div>
-{% endif %}
-{% endblock %}

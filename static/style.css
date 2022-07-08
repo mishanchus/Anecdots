@@ -7,11 +7,12 @@ html{
 
 
 body{
+    min-height: 100%;
+    height: auto;
     font-family: sans-serif;
     margin: 0 auto;
     margin-top: 80px;
     background-color: rgb(240, 255, 230);
-    height: 100%;
 }
 header{
     width: 100%;
@@ -22,10 +23,15 @@ header{
     left: 0;
 }
 
+main{
+    min-height: 100vh;
+    height: auto;
+    background-image: url(fon.png);
+}
 .content{
     width: 100%;
     margin: auto;
-    background-image: url(fon.png);
+
 }
 
 
@@ -90,8 +96,9 @@ p{
     text-align: right;
 }
 
-.cat_in_anec {
+.cat_in_anec, .comments_link {
     color: black;
+
 }
 
 .add_anec{
@@ -105,9 +112,10 @@ p{
     font-size: 20px;
 }
 .new_anec, .form{
-    width: 60%;
+    width: 40%;
     margin: auto;
     align-items: center;
+    background-color: rgb(240, 255, 230);
 }
 .text{
     display: block;
@@ -202,4 +210,9 @@ p{
     font-size: 30px;
     font-weight: 300;
     text-decoration: none;
+}
+
+.first_str{
+    display: flex;
+    justify-content: space-between;
 }

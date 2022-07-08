@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import HomePageView, AnecByCat, AddAnec
+from .views import HomePageView, AnecByCat, AddAnec, AnecDetail
 
 urlpatterns = [
     path('', HomePageView.as_view(), name='home'),
@@ -7,6 +7,7 @@ urlpatterns = [
     path('category/<int:category_id>/', AnecByCat.as_view() ,name = 'cats'),
     # path('category/<int:category_id>/', anec_by_cat ,name = 'cats'),
     path('new_anec/',AddAnec.as_view(), name = 'add_anec'),
-    # path('new_anec/',add_anec, name = 'add_anec')
+    # path('new_anec/',add_anec, name = 'add_anec'),
+    path('anec/<int:pk>/', AnecDetail.as_view(), name='detail_anec')
 
 ]
